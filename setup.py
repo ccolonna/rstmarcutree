@@ -10,10 +10,13 @@ with open(path.join(here, 'README'), encoding='utf-8') as f:
 
 setup(
     name='rstmarcutree',
-    version='1.0',
+    version='1.0.3',
     description='A project to load rst discourse tree enriched with Marcu attribute from .dis files',
     long_description=long_description,
     author='Christian Colonna',
+    license='BSD',
+    long_description_content_type='text/plain',
+    url='https://github.com/Christian-Nja/rstmarcutree',
     author_email='christian.colonna@studio.unibo.it',
     classifiers=[  
         'Development Status :: 3 - Alpha',

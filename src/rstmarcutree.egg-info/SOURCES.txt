@@ -1,0 +1,10 @@
+README
+setup.py
+src/rstmarcutree/__init__.py
+src/rstmarcutree/classes.py
+src/rstmarcutree/rstmarcutree.py
+src/rstmarcutree.egg-info/PKG-INFO
+src/rstmarcutree.egg-info/SOURCES.txt
+src/rstmarcutree.egg-info/dependency_links.txt
+src/rstmarcutree.egg-info/requires.txt
+src/rstmarcutree.egg-info/top_level.txt

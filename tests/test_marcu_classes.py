@@ -6,15 +6,15 @@
 
 from __future__ import print_function
 
-from rstmarcutree import load_dis_tree
+from rstmarcutree import load_tree
 
 # file path and helper
-file_path = "src/tests/test_sentence_nyt.dis"
-file_path_2 = "src/tests/test_JOINT.dis"
+file_path = "test_sentence_nyt.dis"
+file_path_2 = "test_JOINT.dis"
 
 # convert .dis representation into python rstmarcu one
-rst_tree = load_dis_tree(file_path)
-rst_tree_2 = load_dis_tree(file_path_2)
+rst_tree = load_tree(file_path)
+rst_tree_2 = load_tree(file_path_2)
 
 def iterate_over_tree(rst_tree):
     for node in rst_tree.nodes:

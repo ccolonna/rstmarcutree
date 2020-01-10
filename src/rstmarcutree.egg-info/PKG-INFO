@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: rstmarcutree
+Version: 1.0.3
+Summary: A project to load rst discourse tree enriched with Marcu attribute from .dis files
+Home-page: https://github.com/Christian-Nja/rstmarcutree
+Author: Christian Colonna
+Author-email: christian.colonna@studio.unibo.it
+License: BSD
+Description: =================================
+        Installing and using RstMarcuTree
+        =================================
+        
+        Introduction
+        ============
+        
+        This library helps you to process a Rhetorical Structure Theory Discourse Tree
+        
+        It returns a RSTTree representing the tree composed by RSTNode.
+        The tree is enriched with attribute like promotion set described by Daniel Marcu in paper:
+        
+        * Building up rhetorical structure tree 1996
+        
+        * Discourse trees are good indicators of importance in test 1999
+        
+        
+        Installation
+        ============
+        
+        RstMarcuTree has support for python 2.7
+        
+        dependencies: discoursegraphs
+        
+        $ pip2.7 install rstmarcutree
+        
+        Usage
+        =====
+        
+        The library process a file containing a rst tree in .dis format.
+        You can use online discourse dependency parser like feng hirst 2014 parser to produce
+        a discourse tree of a text.
+        
+        Vanessa Wei Feng and Graeme Hirst, 2014.
+        A Linear-Time Bottom-Up Discourse Parser with Constraints and Post-Editing.
+        
+        Vanessa Wei Feng and Graeme Hirst, 2014.
+        Two-pass Discourse Segmentation with Pairing and Global Features.
+        
+        You can use:
+            https://github.com/NLPbox/rst-converter-service
+        to easily convert the file in .dis output:
+        
+        having ./test_rst.dis file path in python2.7 console or script you can just just:
+        
+        >>> from rstmarcutree import load_tree
+        >>>
+        >>> rst_tree = load_tree('./test_rst.dis')
+        >>>
+        >>> root = rst_tree.get(0)
+        >>>
+        >>> root_satellite = root.get_satellite()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Description-Content-Type: text/plain

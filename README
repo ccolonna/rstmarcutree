@@ -52,9 +52,20 @@ having ./test_rst.dis file path in python2.7 console or script you can just just
 >>> root_satellite = root.get_satellite()
 
 
+Test
+====
+
+If you directly clone the repository, supposed you have already installed 
+rstmarcutree, you can test it with:
+
+$ cd tests
+$ python test_marcu_classes.py
 
 
+Contact
+========
 
+For help or if you find any bug write to christian.colonna@studio.unibo.it
 
 
 
