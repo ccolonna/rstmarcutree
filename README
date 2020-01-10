@@ -22,13 +22,13 @@ RstMarcuTree has support for python 2.7
 
 dependencies: discoursegraphs
 
-$ pip2.7 install RstMarcuTree
+$ pip2.7 install rstmarcutree
 
 Usage
 =====
 
 The library process a file containing a rst tree in .dis format.
-You can use online dependency parser like feng hirst 2014 parser to produce
+You can use online discourse dependency parser like feng hirst 2014 parser to produce
 a discourse tree of a text.
 
 Vanessa Wei Feng and Graeme Hirst, 2014.
