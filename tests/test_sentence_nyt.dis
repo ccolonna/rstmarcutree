@@ -1,0 +1,62 @@
+(Root
+  (span 1 9)
+  (Nucleus
+    (span 1 4)
+    (rel2par span)
+    (Nucleus
+      (leaf 1)
+      (rel2par span)
+      (text
+        _!Secretary of State Mike Pompeo on Tuesday addressed some of the many questions_!))
+    (Satellite
+      (span 2 4)
+      (rel2par Elaboration)
+      (Nucleus
+        (leaf 2)
+        (rel2par span)
+        (text _!surrounding the American airstrike_!))
+      (Satellite
+        (span 3 4)
+        (rel2par Elaboration)
+        (Nucleus
+          (leaf 3)
+          (rel2par span)
+          (text
+            _!that killed Maj. Gen. Qassim Suleimani and a number of other people_!))
+        (Satellite
+          (leaf 4)
+          (rel2par Elaboration)
+          (text _!traveling with him ._!)))))
+  (Satellite
+    (span 5 9)
+    (rel2par Elaboration)
+    (Nucleus
+      (span 5 7)
+      (rel2par same-unit)
+      (Nucleus
+        (span 5 6)
+        (rel2par span)
+        (Satellite
+          (leaf 5)
+          (rel2par Background)
+          (text _!" It was the right decision ,_!))
+        (Nucleus
+          (leaf 6)
+          (rel2par span)
+          (text _!we got it right , "_!)))
+      (Satellite
+        (leaf 7)
+        (rel2par Attribution)
+        (text _!Mr. Pompeo said_!)))
+    (Nucleus
+      (span 8 9)
+      (rel2par same-unit)
+      (Nucleus
+        (leaf 8)
+        (rel2par span)
+        (text
+          _!as reporters quizzed him about President Trump 's decision_!))
+      (Satellite
+        (leaf 9)
+        (rel2par Elaboration)
+        (text _!to carry out the attack on Friday ._!)))))
