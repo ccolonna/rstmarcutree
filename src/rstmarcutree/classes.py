@@ -255,7 +255,7 @@ class RSTTree(object):
             for node in nodes:    
                 get_most_important_units(node)
 
-        self.rescale_tree_to_set_parent_and_childs_and_promotion_sets(nodes)
+        rescale_tree_to_set_parent_and_childs_and_promotion_sets(nodes)
         self.nodes = nodes
     
     def get_nodes_by_relation(self, relation):
