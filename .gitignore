@@ -1,4 +1,4 @@
-build
-dist
-rstmarcutree.egg-info
+build/
+dist/
+rstmarcutree.egg-info/
 
