@@ -38,7 +38,7 @@ class RSTTreeHelper(object):
                 index = node.idx
                 status = self.ROOT
                 relation = node.label()
-                relation_type = self.get_node_relation_type(node)
+                schema = self.get_node_schema(node)
                 parent_pointer = None
                 child_pointers = self.get_child_indexes(node)
                 text = self.get_node_spanned_text(node)        
@@ -47,7 +47,7 @@ class RSTTreeHelper(object):
                 index = node.idx
                 status = node.label()
                 relation = self.LEAF
-                relation_type = None
+                schema = None
                 parent_pointer = node.parent().idx  # TODO debug ATTENTION maybe error
                 child_pointers = None
                 text = self.get_node_spanned_text(node)
@@ -56,12 +56,12 @@ class RSTTreeHelper(object):
                 index = node.idx
                 status = node.label()
                 relation = node[0].label()
-                relation_type = self.get_node_relation_type(node[0])
+                schema = self.get_node_schema(node[0])
                 parent_pointer = self.evaluate_middle_node_parent_index(node)
                 child_pointers = self.get_child_indexes(node[0])
                 text = self.get_node_spanned_text(node)               
             
-            rst_node = RSTNode(index, status, relation, relation_type, parent_pointer, child_pointers, text, None, None, [])
+            rst_node = RSTNode(index, status, relation, schema, parent_pointer, child_pointers, text, None, None, [])
             marcu_rst_nodes.append(rst_node)
 
         return RSTTree(marcu_rst_nodes)
@@ -114,7 +114,7 @@ class RSTTreeHelper(object):
         return node.parent().label()
 
     # TODO DEBUG check the behaviour with DUP node    
-    def get_node_relation_type(self, node):
+    def get_node_schema(self, node):
         """ Check if relation is multinuclear (Joint, Sequence ...)
             or dependent (Condition, Attribution ...)
         """
@@ -169,11 +169,11 @@ class RSTTreeHelper(object):
 
 class RSTNode(object):
     """ Marcu RST tree node """
-    def __init__(self, index, status, relation, relation_type, parent_pointer, child_pointers, text, parent, childs, promotion_set):
+    def __init__(self, index, status, relation, schema, parent_pointer, child_pointers, text, parent, childs, promotion_set):
         self.index = index
         self.status = status # ROOT, NUCLEUS or SATELLITE
         self.relation = relation # Relations or LEAF
-        self.relation_type = relation_type # MULTINUCLEAR or DEPENDENT
+        self.schema = schema # MULTINUCLEAR or DEPENDENT
         self.parent_pointer = parent_pointer # parent
         self.child_pointers = child_pointers # list of childs
         self.text = text # the text spanned by the node
@@ -186,7 +186,7 @@ class RSTNode(object):
             a list of nucleus if the node surrounds a multinuclear relation.
             None if the node is an edu.
         """
-        if self.relation_type == 'MULTINUC':
+        if self.schema == 'MULTINUC':
             return self.childs
         elif self.relation == 'LEAF':
             return None
