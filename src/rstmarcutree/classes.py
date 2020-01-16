@@ -29,7 +29,7 @@ class RSTTreeHelper(object):
         tree = self.load_dis_tree(dis_tree_file_path)
         marcu_rst_nodes = [] # this nodes will be used to generate a RSTTree
 
-        self.inject_unique_id(tree) # injecting pointers to be free from impossible what the fuck ntlk tree or dgparented wtf 
+        self.inject_unique_id(tree) # injecting pointers 
         
         for node in tree.subtrees():
             if node.idx == 'DUP': # Don't parse duplicate
@@ -48,7 +48,7 @@ class RSTTreeHelper(object):
                 status = node.label()
                 relation = self.LEAF
                 schema = None
-                parent_pointer = node.parent().idx  # TODO debug ATTENTION maybe error
+                parent_pointer = node.parent().parent().idx  # TODO debug ATTENTION maybe error
                 child_pointers = None
                 text = self.get_node_spanned_text(node)
             # parse intermidiate node, Nucleus, Satellite, beaware to Arc Relation
@@ -79,8 +79,6 @@ class RSTTreeHelper(object):
                  /   \\
         idx:3  S       N  idx:4    
         """        
-        # if node is fucking duplicate wtf collapse nltk doesn't work ?!
-        # just set idx DUP       
         i = 0
         for subtree in tree.subtrees():
             if self.node_is_not_node_but_relation_arc_label(subtree):
@@ -246,7 +244,8 @@ class RSTTree(object):
 
             # childs and parents                 
             for node in nodes:
-                if node.parent_pointer:
+                if node.parent_pointer is not None:
+                    print(node.index, node.parent_pointer)
                     node.parent = get_node_by_index(node.parent_pointer, nodes)
                 if node.child_pointers:
                     node.childs = [get_node_by_index(child_pointer, nodes) for child_pointer in node.child_pointers]

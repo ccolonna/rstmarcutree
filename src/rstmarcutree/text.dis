@@ -1,0 +1,46 @@
+(Root
+  (span 1 7)
+  (Nucleus
+    (span 1 2)
+    (rel2par same-unit)
+    (Nucleus
+      (leaf 1)
+      (rel2par span)
+      (text _!In 2005 , Nature published a peer review_!))
+    (Satellite
+      (leaf 2)
+      (rel2par Elaboration)
+      (text
+        _!comparing 42 hard science articles from Encyclopedia Britannica and Wikipedia_!)))
+  (Nucleus
+    (span 3 7)
+    (rel2par same-unit)
+    (Satellite (leaf 3) (rel2par Attribution) (text _!and found_!))
+    (Nucleus
+      (span 4 7)
+      (rel2par span)
+      (Nucleus
+        (leaf 4)
+        (rel2par span)
+        (text
+          _!that Wikipedia 's level of accuracy approached that of Britannica ,_!))
+      (Satellite
+        (span 5 7)
+        (rel2par Contrast)
+        (Satellite
+          (leaf 5)
+          (rel2par Attribution)
+          (text _!although critics suggested_!))
+        (Nucleus
+          (span 6 7)
+          (rel2par span)
+          (Nucleus
+            (leaf 6)
+            (rel2par span)
+            (text
+              _!that it might not have fared so well in a similar study of a random sampling of all articles or one_!))
+          (Satellite
+            (leaf 7)
+            (rel2par Elaboration)
+            (text
+              _!focused on social science or contentious social issues ._!)))))))
