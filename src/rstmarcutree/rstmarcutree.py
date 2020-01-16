@@ -1,9 +1,9 @@
 #!python 
+#
+# author: Christian Colonna
 
 """ Function takes as input the path to a .dis file representing a discourse tree and returns """
 """ an object oriented representation enriched with Daniel Marcu attributes 1996 1999 """
-
-__author__ = "Christian Colonna"
 
 from classes import RSTTreeHelper
 
@@ -22,6 +22,12 @@ def load_tree(dis_file_path):
 
         >>> tree_root.get_satellite()
         >>> tree_root.get_nucleus()
+
+        To get the saliency score of terminal nodes between 0 and 1:
+
+        >>> edus = tree.get_edus()
+        >>> for edu in edus:
+        >>>     print edu.get_normalized_saliency_score()
 
     """
     rst_helper = RSTTreeHelper()

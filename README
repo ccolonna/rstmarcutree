@@ -51,6 +51,11 @@ having ./test_rst.dis file path in python2.7 console or script you can just just
 >>>
 >>> root_satellite = root.get_satellite()
 
+To get the saliency score of terminal nodes between 0 and 1:
+
+>>> edus = tree.get_edus()
+>>> for edu in edus:
+>>>     print edu.get_normalized_saliency_score()
 
 Test
 ====
@@ -60,7 +65,7 @@ rstmarcutree, you can test it with:
 
 $ cd tests
 $ python test_marcu_classes.py
-
+$ python test_saliency_score.py
 
 Contact
 ========
