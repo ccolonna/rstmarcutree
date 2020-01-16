@@ -2,6 +2,8 @@
 
 """ classes.py: classes for RST Marcu tree generation: RSTTree and RSTNode """
 
+from __future__ import division
+
 __author__ = "Christian Colonna"
 
 from Queue import Queue
@@ -41,14 +43,14 @@ class RSTTreeHelper(object):
                 schema = self.get_node_schema(node)
                 parent_pointer = None
                 child_pointers = self.get_child_indexes(node)
-                text = self.get_node_spanned_text(node)        
+                text = self.get_node_spanned_text(node) 
             # parse the leaves
             elif self.node_is_leaf(node): 
                 index = node.idx
                 status = node.label()
                 relation = self.LEAF
                 schema = None
-                parent_pointer = node.parent().parent().idx  # TODO debug ATTENTION maybe error
+                parent_pointer = node.parent().parent().idx  
                 child_pointers = None
                 text = self.get_node_spanned_text(node)
             # parse intermidiate node, Nucleus, Satellite, beaware to Arc Relation
@@ -65,7 +67,7 @@ class RSTTreeHelper(object):
             marcu_rst_nodes.append(rst_node)
 
         return RSTTree(marcu_rst_nodes)
-
+    
     def inject_unique_id(self, tree):
         """ As nltk tree unary_collapse doesn't work we recreate the tree data 
             structure as a directed acyclyc dependency graph, we inject unique id
@@ -203,6 +205,74 @@ class RSTNode(object):
                 return child
         return None
 
+    def get_saliency_score(self):
+        """ Return the saliency score of a node.
+            Given an edu if it belongs to a promotion set it's score is equal to 
+            the heighest node whose promotion set it belongs to.
+            The promotion set of a node is the set of most important unit spanned by that node.
+
+            We compute it like this: a leaf has a score equal to is distance to the root if it doesn't
+            belong to any promotion set. We start traversing the tree from that node to the root. 
+            If the node belongs to the promotion set of it's parent we add one to the saliency score.
+            Else the saliency score is returned. For non important leaf you can see the score is equal to tree height - node depth 
+        """
+
+        if self.relation != 'LEAF':
+            return None # just terminal node has saliency score
+
+        queue = Queue()
+     
+        saliency_score = self.tree.get_height() - self.get_depth() # depth: number of node from node to root (self excluded root included)   
+        queue.put(self)
+        node_to_assign_saliency_score = self
+        while not queue.empty():
+            node = queue.get()
+            if node.parent is not None:
+                if node_to_assign_saliency_score in node.parent.promotion_set:
+                    queue.put(node.parent)
+                    saliency_score += 1
+                    
+        return saliency_score
+        
+    
+    def get_normalized_saliency_score(self, decimals=2):
+        """ Normalized saliency score in 0-1 interval relative to tree reference system.
+            It's simply saliency_score / tree_height
+        """
+        score = self.get_saliency_score()
+        height = self.tree.get_height()
+        return round(score / height, decimals)
+
+
+    def get_height(self):
+        """ Return the height of a node in a tree, 1 if it's terminal node
+        """
+        queue = Queue()
+        level = 1
+        queue.put((self, level))
+        while not queue.empty():
+            node_and_level = queue.get()
+            if node_and_level[1] > level:
+                level = node_and_level[1]
+            if node_and_level[0].childs:
+                for child in node_and_level[0].childs:
+                    queue.put((child, node_and_level[1] + 1))
+        return level
+    
+    def get_depth(self):
+        """ Return depth of a node in a tree: number of nodes from node to root,
+            we assume as convention node itself excluded root included. Root has depth 0.
+        """
+        queue = Queue()
+        queue.put(self)
+        depth = 0
+        while not queue.empty():
+            node = queue.get()
+            if node.parent is not None:
+                depth += 1
+                queue.put(node.parent)
+        return depth
+
 class RSTTree(object):
     """
     A class that represents a Marcu RST tree as it is described in paper:
@@ -244,8 +314,9 @@ class RSTTree(object):
 
             # childs and parents                 
             for node in nodes:
+                # add reference to the tree
+                node.tree = self
                 if node.parent_pointer is not None:
-                    print(node.index, node.parent_pointer)
                     node.parent = get_node_by_index(node.parent_pointer, nodes)
                 if node.child_pointers:
                     node.childs = [get_node_by_index(child_pointer, nodes) for child_pointer in node.child_pointers]
@@ -277,4 +348,11 @@ class RSTTree(object):
         for node in self.nodes:
             if node.index == index:
                 return node 
+    
+    def get_height(self):
+        """ Return tree height. By convention we assume leaf has height 1.
+            We measured the height as the numbers of node in the longest path 
+            from root to leaf.
+        """
+        return self.get_node(0).get_height()
 

@@ -1,0 +1,74 @@
+(Root
+  (span 1 10)
+  (Nucleus
+    (span 1 6)
+    (rel2par span)
+    (Nucleus
+      (span 1 2)
+      (rel2par span)
+      (Satellite
+        (leaf 1)
+        (rel2par background)
+        (text
+          _!With its distant orbit and slim atmospheric blanket,_!))
+      (Nucleus
+        (leaf 2)
+        (rel2par span)
+        (text _!Mars experiences frigid weather conditions._!)))
+    (Satellite
+      (span 3 6)
+      (rel2par elaboration)
+      (Nucleus
+        (leaf 3)
+        (rel2par span)
+        (text
+          _!Surface temperatures typically average about -60 degrees Celsius at the equator and can dip to -123 degrees C near the poles._!))
+      (Satellite
+        (span 4 6)
+        (rel2par elaboration)
+        (Nucleus
+          (leaf 4)
+          (rel2par contrast)
+          (text
+            _!Only the midday sun at tropical latitudes is warm enough to thaw ice on occasion,_!))
+        (Nucleus
+          (span 5 6)
+          (rel2par contrast)
+          (Nucleus
+            (leaf 5)
+            (rel2par span)
+            (text
+              _!but any liquid water formed in this way would evaporate almost instantly_!))
+          (Satellite
+            (leaf 6)
+            (rel2par cause)
+            (text _!because of the low atmosphere pressure._!))))))
+  (Satellite
+    (span 7 10)
+    (rel2par elaboration)
+    (Nucleus
+      (span 7 8)
+      (rel2par span)
+      (Satellite
+        (leaf 7)
+        (rel2par concession)
+        (text
+          _!Although the atmosphere holds a small amount of water, and water-ice clouds sometimes develop,_!))
+      (Nucleus
+        (leaf 8)
+        (rel2par span)
+        (text
+          _!most Martian weather involves blowing dust or carbon dioxide._!)))
+    (Satellite
+      (span 9 10)
+      (rel2par evidence)
+      (Satellite
+        (leaf 9)
+        (rel2par antithesis)
+        (text
+          _!Each winter, for example, a blizzard of frozen carbon dioxide rages over one pole, and a few meters of this dry-ice snow accumulate as previously frozen carbon dioxide evaporates from the opposite polar cap._!))
+      (Nucleus
+        (leaf 10)
+        (rel2par span)
+        (text
+          _!Yet even on the summer pole temperatures never warm enough to melt frozen water._!)))))

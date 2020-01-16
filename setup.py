@@ -10,7 +10,7 @@ with open(path.join(here, 'README'), encoding='utf-8') as f:
 
 setup(
     name='rstmarcutree',
-    version='1.0.3',
+    version='1.0.4',
     description='A project to load rst discourse tree enriched with Marcu attribute from .dis files',
     long_description=long_description,
     author='Christian Colonna',
