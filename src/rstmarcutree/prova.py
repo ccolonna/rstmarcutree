@@ -5,9 +5,5 @@ tree = load_tree('test_JOINT.dis')
 
 # tree = read_distree('text.dis')
 
-print(tree.get_height())
-
-for node in tree.nodes:
-    if node.relation == 'LEAF':
-         print node.get_normalized_saliency_score()
-
+for node in tree.get_nodes_by_relation('LEAF'):
+    print node.index
