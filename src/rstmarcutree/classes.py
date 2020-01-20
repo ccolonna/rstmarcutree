@@ -205,8 +205,13 @@ class RSTNode(object):
                 return child
         return None
 
-    def get_saliency_score(self):
-        """ Return the saliency score of a node.
+    def get_saliency_score(self, normalized=True, decimals=3):
+        """ 
+            parameters:
+            normalized : boolean (default=True)
+            decimals : string (default=3)
+
+            Return the saliency score of a node.
             Given an edu if it belongs to a promotion set it's score is equal to 
             the heighest node whose promotion set it belongs to.
             The promotion set of a node is the set of most important unit spanned by that node.
@@ -214,7 +219,10 @@ class RSTNode(object):
             We compute it like this: a leaf has a score equal to is distance to the root if it doesn't
             belong to any promotion set. We start traversing the tree from that node to the root. 
             If the node belongs to the promotion set of it's parent we add one to the saliency score.
-            Else the saliency score is returned. For non important leaf you can see the score is equal to tree height - node depth 
+            Else the saliency score is returned. For non important leaf you can see the score is equal to tree height - node depth.
+
+            Normalized saliency score in 0-1 interval relative to tree reference system.
+            It's simply saliency_score / tree_height 
         """
 
         if self.relation != 'LEAF':
@@ -232,16 +240,10 @@ class RSTNode(object):
                     queue.put(node.parent)
                     saliency_score += 1
                     
+        if normalized:
+            height = self.tree.get_height()
+            saliency_score = round(saliency_score / height, decimals)
         return saliency_score
-        
-    
-    def get_normalized_saliency_score(self, decimals=2):
-        """ Normalized saliency score in 0-1 interval relative to tree reference system.
-            It's simply saliency_score / tree_height
-        """
-        score = self.get_saliency_score()
-        height = self.tree.get_height()
-        return round(score / height, decimals)
 
 
     def get_height(self):
@@ -272,6 +274,9 @@ class RSTNode(object):
                 depth += 1
                 queue.put(node.parent)
         return depth
+    
+    def is_terminal(self):
+        return self.relation == 'LEAF'
 
 class RSTTree(object):
     """
@@ -329,30 +334,49 @@ class RSTTree(object):
         self.nodes = nodes
     
     def get_nodes_by_relation(self, relation):
-        """ Return a list of tree nodes by relation they span
+        """ Return a generator of tree nodes by relation they span
         """
-        nodes_by_relation = []
-        for node in self.nodes:
-            if node.relation == relation:
-                nodes_by_relation.append(node)
-        return nodes_by_relation
+        filter_func = lambda node : node if node.relation == relation else None
+        return self.get_node(filter_func)
 
     def get_edus(self):
         """ Return edu's of the tree
         """
         return self.get_nodes_by_relation("LEAF")
 
-    def get_node(self, index):
+    def get_node_by_index(self, index):
         """ Return the node by index
         """
+        filter_func = lambda node : node if node.index == index else None
+        return next(self.get_node(filter_func)) 
+            
+    def get_node(self, filter_func=lambda x : x):
+        """ Return the nodes a generator yelding graph nodes. Accept a filtering function.
+        """
+        nodes_to_return = []
         for node in self.nodes:
-            if node.index == index:
-                return node 
-    
+            filtered_node = filter_func(node)
+            if filtered_node is not None:
+                yield filtered_node
+
     def get_height(self):
         """ Return tree height. By convention we assume leaf has height 1.
             We measured the height as the numbers of node in the longest path 
             from root to leaf.
         """
-        return self.get_node(0).get_height()
+        return self.get_node_by_index(0).get_height()
+
+    def get_satellites(self):
+        """ Return a generator of the satellites of the RST tree.
+        """
+        filter_func = lambda node : node if node.status == "S" else None
+        return self.get_node(filter_func)
+    
+    def get_nucleus(self):
+        """ Return a generator of the nucleus of the RST tree.
+        """
+        filter_func = lambda node : node if node.status == "N" else None
+        return self.get_node(filter_func)
+
+
 

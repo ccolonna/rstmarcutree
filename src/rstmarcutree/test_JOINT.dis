@@ -1,0 +1,356 @@
+(Root
+  (span 1 48)
+  (Nucleus
+    (span 1 44)
+    (rel2par joint)
+    (Satellite
+      (leaf 1)
+      (rel2par preparation)
+      (text _!4. Discussion ._!))
+    (Nucleus
+      (span 2 44)
+      (rel2par span)
+      (Nucleus
+        (span 2 8)
+        (rel2par joint)
+        (Satellite
+          (span 2 4)
+          (rel2par background)
+          (Nucleus
+            (span 2 3)
+            (rel2par joint)
+            (Nucleus
+              (leaf 2)
+              (rel2par span)
+              (text
+                _!We hypothesized that the children , who were over the age of six at the time of collection , would have adult-like SI interpretations ._!))
+            (Satellite
+              (leaf 3)
+              (rel2par elaboration)
+              (text
+                _!We expected that the use of a training session and then the format of the question would guide participants towards evaluating pragmatic felicity over providing truth value judgments , and would result in adult-like interpretations ._!)))
+          (Nucleus
+            (leaf 4)
+            (rel2par joint)
+            (text
+              _!Further , we posited that if our initial hypothesis was not supported , and in fact there was some non-adult-like performance , that there would be significant variability among the conditions , with cardinal numbers having the highest performance and some the weakest ._!)))
+        (Nucleus
+          (span 5 8)
+          (rel2par span)
+          (Nucleus
+            (span 5 7)
+            (rel2par contrast)
+            (Satellite
+              (span 5 6)
+              (rel2par concession)
+              (Nucleus
+                (leaf 5)
+                (rel2par joint)
+                (text
+                  _!On the surface , it does seem as if there is variability_!))
+              (Nucleus
+                (leaf 6)
+                (rel2par joint)
+                (text
+                  _!and perhaps a larger sample size or more items could lead to a significant finding ( see limitations below ) ,_!)))
+            (Nucleus
+              (leaf 7)
+              (rel2par span)
+              (text
+                _!but at least for this study , the only significant finding was the difference between cardinal numbers and some ._!)))
+          (Nucleus
+            (leaf 8)
+            (rel2par contrast)
+            (text
+              _!Significant differences were not observed between all and cardinal numbers or all and some ._!))))
+      (Nucleus
+        (span 9 44)
+        (rel2par joint)
+        (Satellite
+          (leaf 9)
+          (rel2par preparation)
+          (text _!4.1. LIMITATIONS AND FUTURE DIRECTIONS ._!))
+        (Nucleus
+          (span 10 44)
+          (rel2par span)
+          (Satellite
+            (span 10 11)
+            (rel2par concession)
+            (Nucleus
+              (leaf 10)
+              (rel2par span)
+              (text
+                _!This study is limited in its power and generalizability ._!))
+            (Satellite
+              (leaf 11)
+              (rel2par evaluation)
+              (text
+                _!It serves as a reminder of the work that needs to be completed for the cross-linguistic study of SI in particular and acquisition more generally ._!)))
+          (Nucleus
+            (span 12 44)
+            (rel2par span)
+            (Nucleus
+              (span 12 13)
+              (rel2par joint)
+              (Nucleus
+                (leaf 12)
+                (rel2par span)
+                (text
+                  _!Bantu languages are not included in studies of acquisition often enough_!))
+              (Satellite
+                (leaf 13)
+                (rel2par concession)
+                (text
+                  _!despite the numerous languages in this linguistic grouping and the millions of people using them ._!)))
+            (Nucleus
+              (span 14 15)
+              (rel2par joint)
+              (Nucleus
+                (leaf 14)
+                (rel2par span)
+                (text
+                  _!Future studies need to include more participants and more items_!))
+              (Satellite
+                (leaf 15)
+                (rel2par purpose)
+                (text _!to increase power ._!)))
+            (Nucleus
+              (span 16 17)
+              (rel2par joint)
+              (Nucleus
+                (leaf 16)
+                (rel2par span)
+                (text
+                  _!Future studies should also include a larger age range of children_!))
+              (Satellite
+                (leaf 17)
+                (rel2par purpose)
+                (text
+                  _!to document the age at which adult-like performance emerges ._!)))
+            (Nucleus
+              (span 18 20)
+              (rel2par joint)
+              (Satellite
+                (span 18 19)
+                (rel2par background)
+                (Nucleus
+                  (leaf 18)
+                  (rel2par contrast)
+                  (text
+                    _!Related cross-cultural studies have resulted in insufficient statistical power ,_!))
+                (Nucleus
+                  (leaf 19)
+                  (rel2par contrast)
+                  (text
+                    _!but interesting trends ( e.g. , Nedwick , 2014 ) ._!)))
+              (Nucleus
+                (leaf 20)
+                (rel2par span)
+                (text
+                  _!Follow-up studies with increased stimuli and participants are needed ._!)))
+            (Nucleus
+              (span 21 22)
+              (rel2par joint)
+              (Nucleus
+                (leaf 21)
+                (rel2par contrast)
+                (text
+                  _!In a future study , it is also important to consider if additional training in the difference between reporting on felicity and truth value judgments would impact results ,_!))
+              (Nucleus
+                (leaf 22)
+                (rel2par contrast)
+                (text
+                  _!or if more naturalistic experimental conditions ( e.g. , demonstrating actions using real objects instead of two-dimensional depictions ) would be beneficial ._!)))
+            (Nucleus
+              (span 23 25)
+              (rel2par joint)
+              (Satellite
+                (leaf 23)
+                (rel2par background)
+                (text
+                  _!Previous studies in this region of sub-Saharan Africa have found evidence of cultural differences in testing behavior ( Hein , Reich , Marks , Thuma , & Grigorenko , 2016 ) ._!))
+              (Nucleus
+                (span 24 25)
+                (rel2par span)
+                (Nucleus
+                  (leaf 24)
+                  (rel2par contrast)
+                  (text
+                    _!The current study is too small to make strong conclusions with regard to cultural differences and experimental methods ;_!))
+                (Nucleus
+                  (leaf 25)
+                  (rel2par contrast)
+                  (text
+                    _!however , in the study by Hein and colleagues it was found that children responded more or less frequently based on factors such as stimuli type ._!))))
+            (Nucleus
+              (span 26 38)
+              (rel2par joint)
+              (Nucleus
+                (span 26 28)
+                (rel2par span)
+                (Nucleus
+                  (span 26 27)
+                  (rel2par span)
+                  (Nucleus
+                    (leaf 26)
+                    (rel2par span)
+                    (text
+                      _!In the current study , the responses from two children were not included_!))
+                  (Satellite
+                    (leaf 27)
+                    (rel2par cause)
+                    (text
+                      _!because they responded the same way to every item through the training and all test items ._!)))
+                (Satellite
+                  (leaf 28)
+                  (rel2par elaboration)
+                  (text
+                    _!More specifically , they answered “ yes ” that the puppet described the pictures well ._!)))
+              (Satellite
+                (span 29 38)
+                (rel2par concession)
+                (Nucleus
+                  (span 29 31)
+                  (rel2par contrast)
+                  (Nucleus
+                    (leaf 29)
+                    (rel2par span)
+                    (text
+                      _!It is possible that these two children understood the task and really did believe that the puppet did not produce any poor descriptions , and in this regard , are not yet adult-like in their SI interpretations ._!))
+                  (Satellite
+                    (span 30 31)
+                    (rel2par evaluation)
+                    (Nucleus
+                      (leaf 30)
+                      (rel2par span)
+                      (text _!This is unlikely_!))
+                    (Satellite
+                      (leaf 31)
+                      (rel2par evidence)
+                      (text
+                        _!as they said that even the first training item was said well ._!))))
+                (Nucleus
+                  (span 32 38)
+                  (rel2par contrast)
+                  (Nucleus
+                    (span 32 34)
+                    (rel2par span)
+                    (Nucleus
+                      (leaf 32)
+                      (rel2par joint)
+                      (text
+                        _!It is also possible though that these two children were attempting to please the data collectors , or be polite ,_!))
+                    (Nucleus
+                      (span 33 34)
+                      (rel2par joint)
+                      (Nucleus
+                        (leaf 33)
+                        (rel2par span)
+                        (text
+                          _!and that “ yes ” was in some ways a default answer to be provided_!))
+                      (Satellite
+                        (leaf 34)
+                        (rel2par circumstance)
+                        (text
+                          _!when having to respond verbally in a test context ._!))))
+                  (Satellite
+                    (span 35 38)
+                    (rel2par concession)
+                    (Satellite
+                      (leaf 35)
+                      (rel2par preparation)
+                      (text
+                        _!Additional training with the methodology could improve outcomes ._!))
+                    (Nucleus
+                      (span 36 38)
+                      (rel2par span)
+                      (Satellite
+                        (leaf 36)
+                        (rel2par antithesis)
+                        (text
+                          _!The puppets used were picked specifically for this task with careful attention to their appearance ._!))
+                      (Nucleus
+                        (span 37 38)
+                        (rel2par span)
+                        (Nucleus
+                          (leaf 37)
+                          (rel2par joint)
+                          (text
+                            _!Upon arrival at the school , however , it became clear that the children were not accustomed to playing with puppets_!))
+                        (Nucleus
+                          (leaf 38)
+                          (rel2par joint)
+                          (text
+                            _!and that the data collection would be a novel experience for them ._!))))))))
+            (Nucleus
+              (span 39 44)
+              (rel2par joint)
+              (Satellite
+                (leaf 39)
+                (rel2par preparation)
+                (text
+                  _!Further exploration with greater cardinal number ranges could also prove interesting ._!))
+              (Nucleus
+                (span 40 44)
+                (rel2par span)
+                (Satellite
+                  (span 40 41)
+                  (rel2par background)
+                  (Nucleus
+                    (leaf 40)
+                    (rel2par contrast)
+                    (text
+                      _!Numbers through five in the participating communities are most often expressed with native Chitonga words_!))
+                  (Nucleus
+                    (leaf 41)
+                    (rel2par contrast)
+                    (text
+                      _!while numbers greater than five are typically indicated using English borrowings ._!)))
+                (Nucleus
+                  (span 42 44)
+                  (rel2par span)
+                  (Satellite
+                    (span 42 43)
+                    (rel2par concession)
+                    (Nucleus
+                      (leaf 42)
+                      (rel2par span)
+                      (text
+                        _!The cardinal numbers included in this study were only one through five_!))
+                    (Satellite
+                      (leaf 43)
+                      (rel2par purpose)
+                      (text
+                        _!in order to avoid additional item variability ,_!)))
+                  (Nucleus
+                    (leaf 44)
+                    (rel2par span)
+                    (text
+                      _!but larger numbers should be included in future research ._!))))))))))
+  (Nucleus
+    (span 45 48)
+    (rel2par joint)
+    (Satellite
+      (leaf 45)
+      (rel2par preparation)
+      (text _!5. Conclusion ._!))
+    (Nucleus
+      (span 46 48)
+      (rel2par span)
+      (Nucleus
+        (span 46 47)
+        (rel2par span)
+        (Satellite
+          (leaf 46)
+          (rel2par concession)
+          (text _!Albeit limited ,_!))
+        (Nucleus
+          (leaf 47)
+          (rel2par span)
+          (text
+            _!these results provide valuable insight into SI interpretation by Chitonga-speaking children and demonstrate that pragmatic inference acquisition likely follows the order identified in previous research , but appears to be completed at a later age in this language ._!)))
+      (Satellite
+        (leaf 48)
+        (rel2par evaluation)
+        (text
+          _!This interesting combination of findings – expected hierarchy of difficulty , but differing age of acquisition – is an important addition to our growing cross-linguistic knowledge of SI and could be the result of language-specific differences in the use of SI lexical items or methodological differences ._!)))))

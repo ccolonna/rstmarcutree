@@ -34,9 +34,9 @@ def test_tree_height(rst_tree):
 
 def test_node_depth(rst_tree):
     print("Running test: test node depth")
-    node_1 = rst_tree.get_node(7)
-    node_2 = rst_tree.get_node(9)
-    node_3 = rst_tree.get_node(13)
+    node_1 = rst_tree.get_node_by_index(7)
+    node_2 = rst_tree.get_node_by_index(9)
+    node_3 = rst_tree.get_node_by_index(13)
     try:
         assert(node_1.get_depth() == 4)
         assert(node_2.get_depth() == 2)
@@ -52,8 +52,8 @@ def test_node_depth(rst_tree):
 
 def test_node_height(rst_tree):
     print("Running test: test node height")
-    node_1 = rst_tree.get_node(6)
-    node_2 = rst_tree.get_node(13)
+    node_1 = rst_tree.get_node_by_index(6)
+    node_2 = rst_tree.get_node_by_index(13)
     try:
         assert(node_1.get_height() == 1)
         assert(node_2.get_height() == 1)
@@ -76,7 +76,7 @@ def test_saliency_score(rst_tree):
         for edu in edus:
             # we insert them following the linear order of text
             score = scores.get()
-            saliency_score = edu.get_saliency_score()
+            saliency_score = edu.get_saliency_score(normalized=False)
             assert(saliency_score == score)
         print("Test passed")
     except AssertionError, e:

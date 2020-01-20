@@ -36,23 +36,23 @@ def test_get_nodes_by_relation(rst_tree):
     print("Running test: get node by relation")
     try:
         nodes_by_relation = rst_tree.get_nodes_by_relation("Background")
-        assert(nodes_by_relation[0].relation == "Background")
-        assert(len(nodes_by_relation) == 1)
+        node = next(nodes_by_relation)
+        assert(node.relation == "Background")
         print("Test passed")
     except AssertionError, e:
         print(e)
         raise AssertionError
     finally:
-        print("Relation node: ", nodes_by_relation[0].relation, " ", "Background")
+        print("Relation node: ", node.relation, " ", "Background")
 
 def test_get_nodes_by_relation_file_2(rst_tree):
     print("Running test: get node by relation")
     try:
-        nodes_by_relation = rst_tree.get_nodes_by_relation("joint")
+        nodes_by_relation = list(rst_tree.get_nodes_by_relation("joint"))
         assert(len(nodes_by_relation) == 7)
-        nodes_by_relation_2 = rst_tree.get_nodes_by_relation("purpose")
+        nodes_by_relation_2 = list(rst_tree.get_nodes_by_relation("purpose"))
         assert(len(nodes_by_relation_2) == 3)
-        last = rst_tree.get_nodes_by_relation("antithesis")
+        last = list(rst_tree.get_nodes_by_relation("antithesis"))
         assert(len(last) == 1)
         # test get_satellite and text
         assert(last[0].get_nucleus().text == 'Upon arrival at the school , however , it became clear that the children were not accustomed to playing with puppets and that the data collection would be a novel experience for them .')
@@ -69,15 +69,15 @@ def test_get_nodes_by_relation_file_2(rst_tree):
 def test_get_node_childs(rest_tree):
     print("Running test: get node childs")
     try:
-        background_node = rst_tree.get_node(10) # we implicitly test also some simple functions
-        background_node_2 = rst_tree.get_node(0)
+        background_node = rst_tree.get_node_by_index(10) # we implicitly test also some simple functions
+        background_node_2 = rst_tree.get_node_by_index(0)
         assert(background_node.child_pointers == [11, 12])
         assert(background_node.childs[0].index == 11)
         assert(background_node.childs[1].index == 12)
         assert(background_node_2.child_pointers == [1, 8])
         assert(background_node_2.childs[0].index == 1)
         assert(background_node_2.childs[1].index == 8)
-        assert(rst_tree.get_node(4).childs == None) # Leaf hasn't child
+        assert(rst_tree.get_node_by_index(4).childs == None) # Leaf hasn't child
         print("Test passed")
     except AssertionError, e:
         print(e)
@@ -89,9 +89,11 @@ def test_get_node_childs(rest_tree):
 def test_get_edus(rst_tree):
     print("Running test: get node edus")
     try:
-        edus = rst_tree.get_edus()
-        for edu in edus:
+        edu_generator = rst_tree.get_edus()
+        edus = [] 
+        for edu in edu_generator:
             edu_indexes = [2,4,6,7,11,12,13,15,16]
+            edus.append(edu)
             assert(edu.index) in edu_indexes
             edu_indexes.remove(edu.index)
         assert(edus[1].text == 'surrounding the American airstrike')
@@ -107,7 +109,7 @@ def test_get_edus(rst_tree):
 def test_get_edus_file_2(rst_tree):
     print("Running test: get tree edus")
     try:
-        edus = rst_tree.get_edus()
+        edus = list(rst_tree.get_edus())
         assert(len(edus) == 48)
     except AssertionError, e:
         print(e)
@@ -118,10 +120,10 @@ def test_get_edus_file_2(rst_tree):
 def test_get_parent(rst_tree):
     print("Running test: get parent")
     try:
-        child_node = rst_tree.get_node(9)
-        assert(child_node.parent == rst_tree.get_node(8))
+        child_node = rst_tree.get_node_by_index(9)
+        assert(child_node.parent == rst_tree.get_node_by_index(8))
         assert(child_node.parent.relation == "same-unit")
-        assert(rst_tree.get_node(0).parent == None)
+        assert(rst_tree.get_node_by_index(0).parent == None)
         print("Test passed")
     except AssertionError, e:
         print(e)
@@ -132,11 +134,11 @@ def test_get_parent(rst_tree):
 def test_get_nucleus_and_get_satellite(rst_tree):
     print("Running test: get nucleus and get satellite")
     try:
-        node = rst_tree.get_node(3)
-        node_spanning_multinuclear = rst_tree.get_node(8)
-        assert(node.get_nucleus() == rst_tree.get_node(4))
-        assert(node.get_satellite() == rst_tree.get_node(5))
-        assert(node_spanning_multinuclear.get_nucleus() == [rst_tree.get_node(9), rst_tree.get_node(14)])
+        node = rst_tree.get_node_by_index(3)
+        node_spanning_multinuclear = rst_tree.get_node_by_index(8)
+        assert(node.get_nucleus() == rst_tree.get_node_by_index(4))
+        assert(node.get_satellite() == rst_tree.get_node_by_index(5))
+        assert(node_spanning_multinuclear.get_nucleus() == [rst_tree.get_node_by_index(9), rst_tree.get_node_by_index(14)])
         assert(node_spanning_multinuclear.get_satellite() == None)
         print("Test passed")
     except AssertionError, e:
@@ -148,9 +150,9 @@ def test_get_nucleus_and_get_satellite(rst_tree):
 def test_promotion_set(rst_tree):
     print("Running test: test promotion set")
     try:
-        root = rst_tree.get_node(0)
+        root = rst_tree.get_node_by_index(0)
         salient_texts = [node.text for node in root.promotion_set]
-        antithesis = rst_tree.get_nodes_by_relation("antithesis")[0]
+        antithesis = next(rst_tree.get_nodes_by_relation("antithesis"))
         antithesis_texts = [node.text for node in antithesis.promotion_set]
         assert(len(salient_texts) == 13)
         assert("Significant differences were not observed between all and cardinal numbers or all and some ." in salient_texts)
