@@ -32,7 +32,7 @@ class RSTTreeHelper(object):
         marcu_rst_nodes = [] # this nodes will be used to generate a RSTTree
 
         self.inject_unique_id(tree) # injecting pointers 
-        
+
         for node in tree.subtrees():
             if node.idx == 'DUP': # Don't parse duplicate
                 continue
@@ -50,7 +50,7 @@ class RSTTreeHelper(object):
                 status = node.label()
                 relation = self.LEAF
                 schema = None
-                parent_pointer = node.parent().parent().idx  
+                parent_pointer = self.evaluate_leaf_node_parent_index(node) 
                 child_pointers = None
                 text = self.get_node_spanned_text(node)
             # parse intermidiate node, Nucleus, Satellite, beaware to Arc Relation
@@ -67,6 +67,7 @@ class RSTTreeHelper(object):
             marcu_rst_nodes.append(rst_node)
 
         return RSTTree(marcu_rst_nodes)
+    
     
     def inject_unique_id(self, tree):
         """ As nltk tree unary_collapse doesn't work we recreate the tree data 
@@ -88,6 +89,15 @@ class RSTTreeHelper(object):
             else:
                 subtree.idx = i
                 i += 1
+    
+    def evaluate_leaf_node_parent_index(self, node):
+        """ Treats special cases in which LEAF has root as parent.
+            In very short tree. 
+        """
+        if node.parent().parent() is None: #root
+            return node.parent().idx
+        else:
+            return node.parent().parent().idx
 
     def evaluate_middle_node_parent_index(self, node):
         """ Special function: arc_relation_node has index DUP,
@@ -212,17 +222,17 @@ class RSTNode(object):
             decimals : string (default=3)
 
             Return the saliency score of a node.
-            Given an edu if it belongs to a promotion set it's score is equal to 
+            Given an edu if it belongs to a promotion set it's score is equal to
             the heighest node whose promotion set it belongs to.
             The promotion set of a node is the set of most important unit spanned by that node.
 
-            We compute it like this: a leaf has a score equal to is distance to the root if it doesn't
-            belong to any promotion set. We start traversing the tree from that node to the root. 
+            We compute it like this: a leaf has a score equal to its distance to the root if it doesn't
+            belong to any promotion set. We start traversing the tree from that node to the root.
             If the node belongs to the promotion set of it's parent we add one to the saliency score.
             Else the saliency score is returned. For non important leaf you can see the score is equal to tree height - node depth.
 
             Normalized saliency score in 0-1 interval relative to tree reference system.
-            It's simply saliency_score / tree_height 
+            It's simply saliency_score / tree_height
         """
 
         if self.relation != 'LEAF':
